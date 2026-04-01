@@ -12,17 +12,10 @@ using namespace std;
 class LongsetIncreasingSubsequence: Solution
 {
 public:
-    struct Cmp {
-        bool operator()(const pair<int,int>& a, const pair<int,int>& b) const {
-            return a.first < b.first;
-        }
-    };
 
     int lengthOfLIS(vector<int>& nums) {
+        // dp[i]表示以nums[i]结尾的，截止至i的最长递增子序列的长
         vector<int> dp(nums.size(), 1);
-        // first: num, second: index in dp
-        set<pair<int, int>, Cmp> s;
-
         int max_len = 1;
         for (int i = 0; i < nums.size(); i++)
         {

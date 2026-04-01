@@ -23,140 +23,110 @@
 #include "Public/Week3/Day3/FlatternBinaryTreeToLinkedList.h"
 #include "Public/Week3/Day4/NumberOfIslands.h"
 #include "Public/Week3/Day5/CourseSchedule.h"
+
 #include "Public/Week4/Day5/LongsetIncreasingSubsequence.h"
 
+#include "Public/Week5/Day1/Permutations.h"
+#include "Public/Week5/Day1/Permutations_Better.h"
+#include "Public/Week5/Day2/Subsets.h"
+#include "Public/Week5/Day2/Subsets_Binary.h"
+#include "Public/Week5/Day2/Subsets_Recursion.h"
+#include "Public/Week5/Day4/LRUCache.h"
+#include "Public/Week5/Day6/EditDistance.h"
+
+#include "Public/Week6/Day1/CombinationSum.h"
+#include "Public/Week6/Day2/GenerateParentheses.h"
+#include "Public/Week6/Day3/WordSearch.h"
 
 #include "Template/MaxHeap.h"
 #include "Template/QuickSort.h"
 #include "Template/UnionFind.hpp"
 
-class TestA
-{
-public:
-    TestA()
-    {
-        p = new int();
-        *p = 0xffff;
-    }
-    ~TestA()
-    {
-        cout << "~TestA()" << endl;
-        delete p;
-    }
-
-    int *p;
-};
-
-class TestB
-{
-    TestA a;
-public:
-    operator TestA()
-    {
-        cout << "implicit convert" << endl;
-        return TestA();
-    }
-    explicit operator const TestA& () const {
-        cout << "explicit convert" << endl;
-        return a;
-    }
-};
-
-const TestA& TestFunc(const TestA& b)
-{
-    return b;
-}
-
-template <typename T>
-class Container
-{
-public:
-    Container(T val): data(val) {}
-    ~Container() = default;
-    void display() const
-    {
-        std::cout << "Generic Container: " << data <<endl;
-    }
-private:
-    T data;
-};
-
-template <>
-class Container<int*>
-{
-public:
-    Container(int* val) : data(val) {}
-    ~Container() = default;
-
-    void display() const
-    {
-        cout << "Pointer Container: " << *data << endl;
-    }
-
-private:
-    int* data;
-};
+#include "Public/Tencent/TencentOnlineTest.h"
 
 
-class Base
-{
-public:
-    Base() : base_val(0) {}
-    Base(int val): base_val(val) {}
-
-    virtual void printInfo() const
-    {
-        cout << "Base value = " << base_val << endl;
-    }
-
-protected:
-    int base_val;
-};
-
-class Derived: public Base
-{
-public:
-    Derived() = default;
-    Derived(int base, int derived) : Base(base), derived_val(derived) {}
-
-    virtual void printInfo() const
-    {
-        cout << "Base value = " << base_val << ", Derived value = " << derived_val << endl;
-    }
-
-private:
-    int derived_val;
-    int extra;
-};
-
-void printFunc(const Base arr[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        arr[i].printInfo();
-    }
-}
 
 int main() {
-    // auto solution = std::make_shared<LongsetIncreasingSubsequence>();
-    // solution->main();
+    auto solution = std::make_shared<WordSearch>();
+    solution->main();
+
+    // int arr[3] = {1, 2, 3};
+    // cout << arr << ", " << &arr << endl;
+    //
+    // int* num = new int(5);
+    // cout << *num << ", " << num << endl;
+    // delete num;
+
     // cout << sizeof(Base) << " " << sizeof(Derived) << endl;
     // Derived arr[2];
     // arr[0] = Derived(0, 1);
     // arr[1] = Derived(3, 2);
     // printFunc(arr, 2);
 
-    TestB testB;
-    const TestA& testA = TestFunc(testB);
-    int i = *(testA.p);
-    std::cout << i <<std::endl;
-    return 0;
+    // Q4
+    // TestB testB;
+    // const TestA& testA = TestFunc(testB);
+    // int i = *(testA.p);
+    // std::cout << i <<std::endl;
 
+    // Q5
+    // char p1[] = "abcde";
+    // const char* p2 = "abcdc";
+    // const char* p3 = p2 + 3;
+    // int size1 = (int*)p3 - (int*)p2;
+    // cout << size1 << endl;
+    // cout << sizeof(Test) << endl;
+    // cout << sizeof(Test1) << endl;
+    //
+    // cout << "======" << endl;
+    // A a(22, 33);
+    // int* arr = (int*)&a;
+    // cout << arr[2] << endl;
+    //
+    // // Q8
+    // cout << "======" << endl;
     // Container<int> c1(5);
     // c1.display();
     // Container<int*> c2(new int(42));
     // c2.display();
-    // return 0;
+
+    // Q9
+    // cout << "======" << endl;
+    // vector<TestC> Context;
+    // TestC a1(1, 2);
+    // Context.push_back(a1);
+    // TestC& p = Context[0];
+    // for (int i = 0; i < 10; i++)
+    // {
+    //     Context.push_back(p);
+    // }
+    //
+    // for (int i = 0; i < 10; i++)
+    // {
+    //     cout << Context[i].a << ", " << Context[i].b << endl;
+    // }
+
+    // Q10
+    // Player* player = new Player(0, 0);
+    // Enemy* enemy1 = new Enemy(3, 4);
+    // Enemy* enemy2 = new Enemy(10, 10);
+    //
+    // if (player->isColliding(enemy1)) {
+    //     player->onCollision();
+    //     enemy1->onCollision();
+    // }
+    //
+    // if (player->isColliding(enemy2)) {
+    //     player->onCollision();
+    //     enemy2->onCollision();
+    // }
+    //
+    // delete player;
+    // delete enemy1;
+    // delete enemy2;
+
+
+
 
 
 }

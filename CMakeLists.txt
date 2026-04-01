@@ -79,6 +79,28 @@ add_executable(Algorithm main.cpp
         Public/Week2/Day5/MedianFinder.h
         Public/Week4/Day4/PartitionEqualSubsetSum.h
         Public/Week4/Day5/LongsetIncreasingSubsequence.h
-        Public/Week4/LongestCommonSubsequence/LongestCommonSubsequence.h
+        Public/Week4/Day6/LongestCommonSubsequence.h
         shit.h
-        Private/8.cpp)
+        Private/8.cpp
+        Public/Week4/Day7/WordBreak.h
+        Public/Week5/Day1/Permutations.h
+        Public/Week5/Day2/Subsets.h
+        Public/Week5/Day1/Permutations_Better.h
+        Public/Week5/Day2/Subsets_Binary.h
+        Public/Week5/Day2/Subsets_Recursion.h
+        Public/Tencent/TencentOnlineTest.h
+        Public/Tencent/Actor.cpp
+        Public/Tencent/Actor.h
+        Public/Week5/Day3/LongestPalindrome.h
+        Public/Week5/Day4/LRUCache.h
+        Public/Week5/Day5/MaximumSubarray.h
+        Template/CArrayQueue.h
+        Template/ReadWriteLock.h
+        Public/Week5/Day6/EditDistance.h
+        Public/Week5/Day7/SetMatrixZero.h
+        Public/Week6/Day1/CombinationSum.h
+        Public/Week6/Day1/CombinationSum_Traceback.h
+        Public/Week6/Day2/GenerateParentheses.h
+        Public/Week6/Day3/WordSearch.h
+        Template/Singleton.h
+)
