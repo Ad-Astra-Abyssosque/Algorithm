@@ -24,9 +24,9 @@ public:
 
     virtual void main() override
     {
-        // vector<int> a = {5, -1, 4, 2, 8, 5, 0, 10, 7};
-        vector<int> a = {1, 2, 3, 4, 5};
-        quicksort(a, 0, (int)a.size() - 1);
+         vector<int> a = {5, -1, 4, 2, 8, 5, 0, 10, 7};
+//        vector<int> a = {1, 2, 3, 4, 5};
+        quicksort_hoare(a, 0, (int)a.size() - 1);
 
         for (int x : a) cout << x << " ";
         cout << "\n";
@@ -70,25 +70,7 @@ private:
         return pre;
     }
 
-    int partition_hoare(vector<int>& a, int l, int r)
-    {
-        int pivot = a[l];
-        // pivot可以随机选，但选完要将其交换到最左边
-        int i = l;
-        int j = r;
-        while (i != j)
-        {
-            // j一定先走
-            while (i != j && a[j] >= pivot) { j--; }
-            while (i != j && a[i] <= pivot) { i++; }
-            swap(a[i], a[j]);
-        }
-        // 退出循环时 i一定等于j，用谁无所谓，但要将pivot交换到ij所处位置
-        // 此时 a[i] = a[j] <= pivot
-        // 因为在上面的while循环中，先移动的是j => j停下来的位置, a[j]一定小于等于pivot
-        swap(a[l], a[i]);
-        return i;
-    }
+    void quicksort_hoare(vector<int>& a, int l, int r);
 
     int partition_hoare2(vector<int>& a, int l, int r)
     {

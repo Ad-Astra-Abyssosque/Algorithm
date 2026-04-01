@@ -41,13 +41,15 @@
 #include "Template/MaxHeap.h"
 #include "Template/QuickSort.h"
 #include "Template/UnionFind.hpp"
+#include "Template/Sort/InsertSort.h"
+#include "Template/Sort/BubbleSort.h"
 
 #include "Public/Tencent/TencentOnlineTest.h"
 
 
 
 int main() {
-    auto solution = std::make_shared<WordSearch>();
+    auto solution = std::make_shared<QuickSort>();
     solution->main();
 
     // int arr[3] = {1, 2, 3};

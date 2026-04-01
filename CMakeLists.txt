@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.1)
+cmake_minimum_required(VERSION 3.27.8)
 project(Algorithm)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -103,4 +103,6 @@ add_executable(Algorithm main.cpp
         Public/Week6/Day2/GenerateParentheses.h
         Public/Week6/Day3/WordSearch.h
         Template/Singleton.h
+        Template/Sort/InsertSort.h
+        Template/Sort/BubbleSort.h
 )
