@@ -45,11 +45,12 @@
 #include "Template/Sort/BubbleSort.h"
 
 #include "Public/Tencent/TencentOnlineTest.h"
-
+#include "Public/Week6/Day4/HouseRobber2.h"
+#include "Public/Week6/Day5/SpiralMatrix.h"
 
 
 int main() {
-    auto solution = std::make_shared<QuickSort>();
+    auto solution = std::make_shared<GenerateParentheses>();
     solution->main();
 
     // int arr[3] = {1, 2, 3};

@@ -105,4 +105,10 @@ add_executable(Algorithm main.cpp
         Template/Singleton.h
         Template/Sort/InsertSort.h
         Template/Sort/BubbleSort.h
+        Public/Week6/Day4/HouseRobber2.h
+        Public/Week6/Day5/SpiralMatrix.h
+        Public/Week6/Day6/SingleNumber.h
+        Public/Week6/Day6/SingleNumber2.h
+        Public/Week6/Day6/SingleNumber3.h
+        Public/Week6/Day7/Trie.h
 )
