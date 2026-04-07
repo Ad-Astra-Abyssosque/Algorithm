@@ -37,6 +37,10 @@
 #include "Public/Week6/Day1/CombinationSum.h"
 #include "Public/Week6/Day2/GenerateParentheses.h"
 #include "Public/Week6/Day3/WordSearch.h"
+#include "Public/Week6/Day4/HouseRobber2.h"
+#include "Public/Week6/Day5/SpiralMatrix.h"
+
+#include "Public/Week7/Day1/DecodeString.h"
 
 #include "Template/MaxHeap.h"
 #include "Template/QuickSort.h"
@@ -45,12 +49,17 @@
 #include "Template/Sort/BubbleSort.h"
 
 #include "Public/Tencent/TencentOnlineTest.h"
-#include "Public/Week6/Day4/HouseRobber2.h"
-#include "Public/Week6/Day5/SpiralMatrix.h"
+
 
 
 int main() {
-    auto solution = std::make_shared<GenerateParentheses>();
+//    std::string s1 = "short";            // 可能用 SSO
+//    std::string s2 = "this is a very long string that exceeds SSO threshold";
+//
+//    std::cout << "s1 capacity: " << s1.capacity() << std::endl; // 通常 15
+//    std::cout << "s2 capacity: " << sizeof(s2) << std::endl; // >15
+
+    auto solution = std::make_shared<DecodeString>();
     solution->main();
 
     // int arr[3] = {1, 2, 3};

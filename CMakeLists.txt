@@ -111,4 +111,5 @@ add_executable(Algorithm main.cpp
         Public/Week6/Day6/SingleNumber2.h
         Public/Week6/Day6/SingleNumber3.h
         Public/Week6/Day7/Trie.h
+        Public/Week7/Day1/DecodeString.h
 )
