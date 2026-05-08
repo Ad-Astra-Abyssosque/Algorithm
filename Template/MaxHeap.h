@@ -13,6 +13,8 @@
 
 #include "../Solution.h"
 
+using namespace std;
+
 // 练习用：大根堆（Max Heap）
 // - 0-based index
 // - 默认以 int 为例；你也可以自己改成模板类（如 template<class T, class Compare>）
@@ -77,5 +79,65 @@ private:
     void swapAt(std::size_t i, std::size_t j) noexcept;
 };
 
+
+class MaxHeap_Practice {
+private:
+    int _size;
+    vector<int> _data;
+
+    int parent(int i) { return (i - 1) / 2; }
+    int left(int i) { return i * 2 + 1; }
+    int right(int i) { return i * 2 + 2; }
+
+    void siftDown(int index) {
+        while (left(index) < _size) {
+            int swap_i = index;
+            if (_data[swap_i] < _data[left(index)]) {
+                swap_i = left(index);
+            }
+            if (right(index) < _size && _data[swap_i] < _data[right(index)]) {
+                swap_i = right(index);
+            }
+
+            if (index == swap_i) { break; }
+            swap(_data[index], _data[swap_i]);
+            index = swap_i;
+        }
+    }
+
+    void siftUp(int index) {
+        while (index != 0) {
+            if (_data[index] > _data[parent(index)]) {
+                swap(_data[index], _data[parent(index)]);
+                index = parent(index);
+            }
+            else { break; }
+        }
+    }
+public:
+    void buildHeap(vector<int>& data) {
+        _data = data;
+        _size = data.size();
+        for (int i = parent(_size - 1); i >= 0; i--) {
+            siftDown(i);
+        }
+    }
+
+    void insert(int x) {
+        _data.push_back(x);
+        _size++;
+        siftUp(_size - 1);
+    }
+
+    void pop() {
+        swap(_data[_size - 1] , _data[0]);
+        _data.pop_back();
+        _size--;
+        if (_size > 0)
+        {
+            siftDown(0);
+        }
+    }
+};
 
 #endif //ALGORITHM_MAXHEAP_H

@@ -1,7 +1,9 @@
 #include <iostream>
 #include <memory>
+#include <queue>
 
 #include "Solution.h"
+#include "Public/preorder_midorder.h"
 #include "Public/Week1/Day1/TwoSum.h"
 #include "Public/Week1/Day2/SubArraySumEqualsK.h"
 #include "Public/Week1/Day3/MoveZeros.h"
@@ -49,7 +51,31 @@
 #include "Template/Sort/BubbleSort.h"
 
 #include "Public/Tencent/TencentOnlineTest.h"
+#include "Public/Week7/Day2/ParsePalindrome.h"
 
+class base
+{
+public:
+    int a = 1;
+    virtual void print(int n = 3)
+    {
+        cout << a+n;
+    }
+};
+class derive : public base
+{
+public:
+    int b = 2;
+    virtual void print(int m)
+    {
+        cout << b+m;
+    }
+};
+
+class ABC {
+public:
+    ABC(int x) { cout << x << endl; }
+};
 
 
 int main() {
@@ -59,8 +85,41 @@ int main() {
 //    std::cout << "s1 capacity: " << s1.capacity() << std::endl; // 通常 15
 //    std::cout << "s2 capacity: " << sizeof(s2) << std::endl; // >15
 
-    auto solution = std::make_shared<DecodeString>();
-    solution->main();
+
+    // std::cout << sizeof(base) << " " << sizeof(derive) << endl;
+    // // derive* b = new derive[10];
+    // // b[7].print();
+    // ABC* p = new ABC[2]{ {1}, {2} };
+    // base* b = new derive;
+    // b->print();
+
+    // auto solution = std::make_shared<FindFirstAndLast>();
+    // solution->main();
+    queue<int> que;
+    que.front();
+
+    vector<int> a = {2, 2, 3, 4, 4};
+    vector<int> b = {1, 2, 3, 5};
+    int k = 9;
+    int i = a.size() - 1;
+    int j = b.size() - 1;
+    int ans = 0;
+    while (true)
+    {
+        if (i < 0) { ans = b[j - k + 1]; break;}
+        if (j < 0) { ans = a[i - k + 1]; break; }
+        if (k == 0) { ans = max(a[i], b[j]); break; }
+        if (a[i] < b[j])
+        {
+            j--;
+        }
+        else
+        {
+            i--;
+        }
+        k--;
+    }
+    cout << ans << endl;
 
     // int arr[3] = {1, 2, 3};
     // cout << arr << ", " << &arr << endl;
@@ -143,4 +202,7 @@ int main() {
 
 }
 
-
+void func(int x = 1)
+{
+    cout << x << endl;
+}

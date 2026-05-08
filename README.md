@@ -15,7 +15,7 @@
 | 日期  | 必做 1                   | 必做 2                  | 可选（第 3 题）     | 备注                                       |
 | --- |------------------------| --------------------- | ------------- | ---------------------------------------- |
 | 2/1 | :heavy_check_mark:**两数之和** | :heavy_check_mark:存在重复元素                | :heavy_check_mark:有效的字母异位词      |                                          |
-| 2/2 | :heavy_check_mark: **:heavy_check_mark:和为 K 的子数组** | :heavy_check_mark:区域和检索 - 数组不可变         | 除自身以外数组的乘积    |                                          |
+| 2/2 | :heavy_check_mark: :heavy_check_mark:**和为 K 的子数组** | :heavy_check_mark:区域和检索 - 数组不可变         | 除自身以外数组的乘积    |                                          |
 | 2/3 | :heavy_check_mark:移动零                    | :heavy_check_mark: **:heavy_check_mark: 合并两个有序数组** | :heavy_check_mark:有序数组的平方       |                                          |
 | 2/4 | :heavy_check_mark: **盛最多水的容器** | :heavy_check_mark:**三数之和** | :heavy_check_mark: **接雨水** | 第一题难在证明解法是正确的；第二题难在去重（复用两数之和思路）、双指针思路比较难想 |
 | 2/5 | :heavy_check_mark: 无重复字符的最长子串 | :heavy_check_mark:长度最小的子数组 | :heavy_check_mark:找到字符串中所有字母异位词 |                                          |
@@ -256,7 +256,53 @@ height = [5, 0, 1, 2]
 
 
 
+### 二分查找/lower upper bound
 
+先说这三种查找方式，既可以使用`l < r` 也可以使用`l <= r`作为循环退出条件。
+
+但是对于lower和upper_bound，使用后者有些麻烦。很容易出错。
+
+因此建议统一写法：**左闭右开区间**
+
+#### 普通二分
+
+```c++
+int searchInsert(vector<int>& nums, int target) {
+    int l = 0, r = nums.size();
+    while (l < r) {
+        int mid = l + (r - l) / 2;
+        if (nums[mid] < target) l = mid + 1;
+        else r = mid;
+    }
+    return l;
+}
+```
+
+#### lower_bound
+
+```c++
+while (l < r) {
+    int mid = l + (r - l) / 2;
+    if (nums[mid] <= target) l = mid + 1;
+    else r = mid;
+}
+```
+
+最后`l`就是答案
+
+#### upper_bound
+
+```c++
+while (l < r) {
+    int mid = l + (r - l) / 2;
+    if (nums[mid] < target) l = mid + 1;
+    else r = mid;
+}
+```
+
+最后`l`就是答案
+
+两者只差一个符号
 
 
 
@@ -270,7 +316,7 @@ height = [5, 0, 1, 2]
 
 | 日期 | 必做 1                                                       | 必做 2                                                      | 可选（第 3 题）                                              | 备注                                              |
 | ---- | ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- |
-| 2/8  | :heavy_check_mark: 反转链表                                  | :heavy_check_mark:合并两个有序链表                          | :heavy_check_mark:删除链表的倒数第 N 个结点                  |                                                   |
+| 2/8  | :heavy_check_mark: 反转链表                                  | :heavy_check_mark:合并两个有序链表                          | :heavy_check_mark:**删除链表的倒数第 N 个结点**              |                                                   |
 | 2/9  | :heavy_check_mark:环形链表                                   | :heavy_check_mark:**环形链表 II**                           | :heavy_check_mark:相交链表                                   | 这天链表“指针套路”一次吃透                        |
 | 2/10 | :heavy_check_mark:有效的括号                                 | :heavy_check_mark::heavy_check_mark: 最小栈                 | 用栈实现队列                                                 |                                                   |
 | 2/11 | :heavy_check_mark::heavy_check_mark:**每日温度**             | :heavy_check_mark::heavy_check_mark:**下一个更大元素 I**    | :heavy_check_mark:柱状图中最大的矩形                         | 如果“柱状图最大矩形”太难：可选题改为复盘错题也 OK |
@@ -335,6 +381,14 @@ height = [5, 0, 1, 2]
 
 
 
+### 删除倒数第N个节点
+
+栈和双指针做法需要掌握
+
+
+
+
+
 ### Day4
 
 在写单调栈题目时，脑子中一定要先明确：栈中元素是从哪里到哪里递增？也就是栈顶大还是栈底大。
@@ -363,6 +417,16 @@ height = [5, 0, 1, 2]
 
 
 
+### 数据流的中位数
+
+大根堆+小根堆实现
+
+需要控制堆中元素的个数，确保“读取中位数”的操作统一
+
+实际上不需要题解中讲的那么复杂
+
+
+
 
 
 
@@ -378,15 +442,15 @@ height = [5, 0, 1, 2]
 > 这一周目标：把“树/图/并查集”补到 **模板能默写、题能讲清**。
 > 题目选择偏大厂实习常见：**树递归/层序、LCA、DFS/BFS（网格&图）、拓扑、并查集、Dijkstra**。
 
-| 日期  | 必做 1                                                 | 必做 2                                 | 可选（第 3 题）                                              | 备注                                     |
-| ----- | ------------------------------------------------------ | -------------------------------------- | ------------------------------------------------------------ | ---------------------------------------- |
-| Day 1 | :heavy_check_mark:二叉树的层序遍历                     | :heavy_check_mark:二叉树的最大深度     | 翻转二叉树                                                   | 先把树的 BFS/递归手感找回来              |
-| Day 2 | :heavy_check_mark::heavy_check_mark:**验证二叉搜索树** | :heavy_check_mark:二叉树的最近公共祖先 | :heavy_check_mark:路径总和 III                               | LCA 很常考，尽量别跳                     |
-| Day 3 | :heavy_check_mark::heavy_check_mark:**二叉树的直径**   | :heavy_check_mark:二叉树展开为链表     | :heavy_check_mark:**从前序与中序遍历序列构造二叉树**<br />TODO：迭代算法 | 构造题能很好检验递归功底                 |
-| Day 4 | :heavy_check_mark:**岛屿数量**                         | :heavy_check_mark:腐烂的橘子           | :heavy_check_mark:01 矩阵                                    | 网格 BFS/DFS 高频三件套                  |
-| Day 5 | :heavy_check_mark:课程表                               | :heavy_check_mark:课程表 II            | :heavy_check_mark:**找到最终的安全状态**                     | 拓扑排序是面试常客                       |
-| Day 6 | :heavy_check_mark:省份数量                             | :heavy_check_mark:冗余连接             | :heavy_check_mark:账户合并                                   | 并查集三连：连通性/冗余边/集合合并       |
-| Day 7 | :heavy_check_mark:网络延迟时间                         | :heavy_check_mark:连接所有点的最小费用 | （无）                                                       | Dijkstra + Kruskal 各练 1 题，足够面试用 |
+| 日期  | 必做 1                                                 | 必做 2                                     | 可选（第 3 题）                                              | 备注                                     |
+| ----- | ------------------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------- |
+| Day 1 | :heavy_check_mark:二叉树的层序遍历                     | :heavy_check_mark:二叉树的最大深度         | :heavy_check_mark:翻转二叉树                                 | 先把树的 BFS/递归手感找回来              |
+| Day 2 | :heavy_check_mark::heavy_check_mark:**验证二叉搜索树** | :heavy_check_mark:**二叉树的最近公共祖先** | :heavy_check_mark:路径总和 III                               | LCA 很常考，尽量别跳                     |
+| Day 3 | :heavy_check_mark::heavy_check_mark:**二叉树的直径**   | :heavy_check_mark:二叉树展开为链表         | :heavy_check_mark:**从前序与中序遍历序列构造二叉树**<br />TODO：迭代算法 | 构造题能很好检验递归功底                 |
+| Day 4 | :heavy_check_mark:**岛屿数量**                         | :heavy_check_mark:腐烂的橘子               | :heavy_check_mark:01 矩阵                                    | 网格 BFS/DFS 高频三件套                  |
+| Day 5 | :heavy_check_mark:课程表                               | :heavy_check_mark:课程表 II                | :heavy_check_mark:**找到最终的安全状态**                     | 拓扑排序是面试常客                       |
+| Day 6 | :heavy_check_mark:省份数量                             | :heavy_check_mark:冗余连接                 | :heavy_check_mark:账户合并                                   | 并查集三连：连通性/冗余边/集合合并       |
+| Day 7 | :heavy_check_mark:网络延迟时间                         | :heavy_check_mark:连接所有点的最小费用     | （无）                                                       | Dijkstra + Kruskal 各练 1 题，足够面试用 |
 
 > 备注说明：
 >
@@ -856,15 +920,15 @@ graph TD
 > 这一周更偏向：**字符串 / 设计题 / DP 变体 / 矩阵 / 图搜索补强**。
 > 选题标准依旧是：**面试收益优先**。
 
-| Day   | 当日 1 题       | 备注                    |
-| ----- | --------------- | ----------------------- |
-| Day 1 | 字符串解码      | 字符串 + 栈，综合性很强 |
-| Day 2 | 分割回文串      | 回溯 + 字符串，值得补   |
-| Day 3 | 搜索二维矩阵 II | 矩阵搜索高频题          |
-| Day 4 | 打家劫舍 III    | 树形 DP 代表题          |
-| Day 5 | 比特位计数      | 位运算补强，性价比高    |
-| Day 6 | 旋转图像        | 矩阵操作经典题          |
-| Day 7 | 任务调度器      | 贪心 / 计数类高频题     |
+| Day   | 当日 1 题                    | 备注                    |
+| ----- | ---------------------------- | ----------------------- |
+| Day 1 | :heavy_check_mark:字符串解码 | 字符串 + 栈，综合性很强 |
+| Day 2 | 分割回文串                   | 回溯 + 字符串，值得补   |
+| Day 3 | 搜索二维矩阵 II              | 矩阵搜索高频题          |
+| Day 4 | 打家劫舍 III                 | 树形 DP 代表题          |
+| Day 5 | 比特位计数                   | 位运算补强，性价比高    |
+| Day 6 | 旋转图像                     | 矩阵操作经典题          |
+| Day 7 | 任务调度器                   | 贪心 / 计数类高频题     |
 
 ## A) 本周题型地图
 

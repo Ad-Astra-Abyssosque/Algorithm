@@ -112,4 +112,11 @@ add_executable(Algorithm main.cpp
         Public/Week6/Day6/SingleNumber3.h
         Public/Week6/Day7/Trie.h
         Public/Week7/Day1/DecodeString.h
+        Private/alibaba/WorkSchedule.cpp
+        Private/alibaba/FindTreasure.cpp
+        Private/alibaba/InterpolateSin.cpp
+        Private/leihuo/MinFireCount.cpp
+        Public/Week7/Day2/ParsePalindrome.h
+        Public/preorder_midorder.h
+        Template/ablist.h
 )

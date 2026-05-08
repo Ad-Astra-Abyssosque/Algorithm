@@ -13,58 +13,40 @@
 class FindFirstAndLast: public Solution {
 public:
     std::vector<int> searchRange(std::vector<int>& nums, int target) {
-        std::vector<int> result;
-        // find target first
-        int start = 0, end = nums.size() - 1;
+        // lower_bound
+        int l = 0;
+        int r = nums.size() - 1;
         int mid = 0;
-        int pos = -1;
-        while (start <= end) {
-            mid = (start + end) / 2;
-            if (nums[mid] == target) {
-                pos = mid;
-                break;
-            }
-            if (target > nums[mid]) {
-                start = mid + 1;
-            }
-            else {
-                end = mid - 1;
-            }
-        }
-        if (pos == -1) {
-            return {-1, -1};
-        }
-        // 确定左边界
-        start = 0, end = pos;
-        int left = 0;
-        while (start <= end) {
-            mid = (start + end) / 2;
-            // 边界在右半边
+        while (l <= r) {
+            mid = l + (r - l) / 2;
             if (nums[mid] < target) {
-                start = mid + 1;
+                l = mid + 1;
             }
-            // 只能相等，边界在左半边
-            else {
-                end = mid - 1;
-                left = mid;
-            }
-        }
-        // 确定右边界
-        start = pos, end = nums.size() - 1;
-        int right = nums.size() - 1;
-        while (start <= end) {
-            mid = (start + end) / 2;
-            // 边界在右半边
-            if (nums[mid] == target) {
-                start = mid + 1;
-            }
-            // 只能大于target，边界在左半边
-            else {
-                right = end = mid - 1;
+            else if (nums[mid] >= target) {
+                if (l == r) break;
+                r = mid;
             }
         }
 
-        return {left, right};
+        if (target != nums[mid]) {
+            return {-1, -1};
+        }
+        int start = mid;
+        // upper_bound
+        l = 0;
+        r = nums.size() - 1;
+        while (l <= r) {
+            mid = l + (r - l) / 2;
+            if (nums[mid] <= target) {
+                l = mid + 1;
+            }
+            else if (nums[mid] > target) {
+                if (l == r) break;
+                r = mid;
+            }
+        }
+        int end = mid - 1;
+        return {start, end};
     }
 
     virtual void main() override {
