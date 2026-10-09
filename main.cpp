@@ -92,34 +92,37 @@ int main() {
     // ABC* p = new ABC[2]{ {1}, {2} };
     // base* b = new derive;
     // b->print();
-
-    // auto solution = std::make_shared<FindFirstAndLast>();
+    // std::vector<int> a;
+    //
+    // std::find(a.begin(), a.end(), 0);
+    //
+    // auto solution = std::make_shared<MinimumWindowSubstring>();
     // solution->main();
-    queue<int> que;
-    que.front();
-
-    vector<int> a = {2, 2, 3, 4, 4};
-    vector<int> b = {1, 2, 3, 5};
-    int k = 9;
-    int i = a.size() - 1;
-    int j = b.size() - 1;
-    int ans = 0;
-    while (true)
-    {
-        if (i < 0) { ans = b[j - k + 1]; break;}
-        if (j < 0) { ans = a[i - k + 1]; break; }
-        if (k == 0) { ans = max(a[i], b[j]); break; }
-        if (a[i] < b[j])
-        {
-            j--;
-        }
-        else
-        {
-            i--;
-        }
-        k--;
-    }
-    cout << ans << endl;
+    // queue<int> que;
+    // que.front();
+    //
+    // vector<int> a = {2, 2, 3, 4, 4};
+    // vector<int> b = {1, 2, 3, 5};
+    // int k = 9;
+    // int i = a.size() - 1;
+    // int j = b.size() - 1;
+    // int ans = 0;
+    // while (true)
+    // {
+    //     if (i < 0) { ans = b[j - k + 1]; break;}
+    //     if (j < 0) { ans = a[i - k + 1]; break; }
+    //     if (k == 0) { ans = max(a[i], b[j]); break; }
+    //     if (a[i] < b[j])
+    //     {
+    //         j--;
+    //     }
+    //     else
+    //     {
+    //         i--;
+    //     }
+    //     k--;
+    // }
+    // cout << ans << endl;
 
     // int arr[3] = {1, 2, 3};
     // cout << arr << ", " << &arr << endl;
@@ -196,7 +199,29 @@ int main() {
     // delete enemy1;
     // delete enemy2;
 
+    string s;
+    cin >> s;
 
+    string res;
+
+    for (int i = 0; i < (int)s.size(); ) {
+        int j = i;
+
+        while (j < (int)s.size() && s[j] == s[i]) {
+            ++j;
+        }
+
+        res += s[i];
+
+        int cnt = j - i;
+        if (cnt > 1) {
+            res += to_string(cnt);
+        }
+
+        i = j;
+    }
+
+    cout << res << '\n';
 
 
 

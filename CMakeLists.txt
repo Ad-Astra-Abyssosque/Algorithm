@@ -119,4 +119,9 @@ add_executable(Algorithm main.cpp
         Public/Week7/Day2/ParsePalindrome.h
         Public/preorder_midorder.h
         Template/ablist.h
+        Public/Week7/Day3/Search2DMatrix2.h
+        Public/Week7/Day6/RotateMatrix.h
+        Public/Week7/Day4/HouseRobber3.h
+        Public/Week7/Day5/CountingBits.h
+        Public/Week7/Day7/TaskScheduler.h
 )
