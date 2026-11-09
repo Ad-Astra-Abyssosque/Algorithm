@@ -17,38 +17,28 @@ public:
     unordered_map<TreeNode*, int> falseMap;
 
     int rob(TreeNode* root) {
-        return dp(root, true);
+        return work(root, true);
     }
 
-    int dp(TreeNode* node, bool canRob) {
+    int work(TreeNode* node, bool canSteal) {
         if (!node) {
             return 0;
         }
 
-        if (canRob) {
+        if (canSteal) {
             if (trueMap.find(node) == trueMap.end()) {
-                int tmp = max(
-                    node->val + dp(node->left, false) + dp(node->right, false),
-                    dp(node->left, true) + dp(node->right, true)
+                trueMap[node] = max(
+                    node->val + work(node->left, false) + work(node->right, false),
+                    work(node->left, true) + work(node->right, true)
                 );
-                trueMap[node] = tmp;
-                return tmp;
             }
-            else {
-                return trueMap[node];
-            }
-
+            return trueMap[node];
         }
         else {
             if (falseMap.find(node) == falseMap.end()) {
-                int tmp = dp(node->left, true) + dp(node->right, true);
-                falseMap[node] = tmp;
-                return tmp;
+                falseMap[node] = work(node->left, true) + work(node->right, true);
             }
-            else {
-                return falseMap[node];
-            }
-
+            return falseMap[node];
         }
     }
 };

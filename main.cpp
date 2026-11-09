@@ -79,11 +79,11 @@ public:
 
 
 int main() {
-//    std::string s1 = "short";            // 可能用 SSO
-//    std::string s2 = "this is a very long string that exceeds SSO threshold";
-//
-//    std::cout << "s1 capacity: " << s1.capacity() << std::endl; // 通常 15
-//    std::cout << "s2 capacity: " << sizeof(s2) << std::endl; // >15
+    //    std::string s1 = "short";            // 可能用 SSO
+    //    std::string s2 = "this is a very long string that exceeds SSO threshold";
+    //
+    //    std::cout << "s1 capacity: " << s1.capacity() << std::endl; // 通常 15
+    //    std::cout << "s2 capacity: " << sizeof(s2) << std::endl; // >15
 
 
     // std::cout << sizeof(base) << " " << sizeof(derive) << endl;
@@ -96,8 +96,9 @@ int main() {
     //
     // std::find(a.begin(), a.end(), 0);
     //
-    // auto solution = std::make_shared<MinimumWindowSubstring>();
-    // solution->main();
+
+    auto solution = std::make_shared<LongsetIncreasingSubsequence>();
+    solution->main();
     // queue<int> que;
     // que.front();
     //
@@ -198,36 +199,4 @@ int main() {
     // delete player;
     // delete enemy1;
     // delete enemy2;
-
-    string s;
-    cin >> s;
-
-    string res;
-
-    for (int i = 0; i < (int)s.size(); ) {
-        int j = i;
-
-        while (j < (int)s.size() && s[j] == s[i]) {
-            ++j;
-        }
-
-        res += s[i];
-
-        int cnt = j - i;
-        if (cnt > 1) {
-            res += to_string(cnt);
-        }
-
-        i = j;
-    }
-
-    cout << res << '\n';
-
-
-
-}
-
-void func(int x = 1)
-{
-    cout << x << endl;
 }

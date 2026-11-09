@@ -37,6 +37,25 @@ public:
         }
         return dp[half] != -1;
     }
+
+    bool canPartition2(vector<int>& nums) {
+        int sum = 0;
+        for (int num: nums) {
+            sum += num;
+        }
+
+        if (sum % 2 != 0) { return false; }
+        int target = sum / 2;
+
+        vector<int> dp(target + 1, 0);
+        for (int num: nums) {
+            for (int i = target; i >= num; i--) {
+                dp[i] = max(dp[i], dp[i - num] + num);
+            }
+            if (dp[target] == target) { return true; }
+        }
+        return false;
+    }
 };
 
 #endif //ALGORITHM_PARTITIONEQUALSUBSETSUM_H
