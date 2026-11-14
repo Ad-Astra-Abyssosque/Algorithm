@@ -125,4 +125,7 @@ add_executable(Algorithm main.cpp
         Public/Week7/Day5/CountingBits.h
         Public/Week7/Day7/TaskScheduler.h
         Public/Week7/Day4/HouseRobber3_BottomToTop.h
+        Public/Week8/Day2/MaxSlidingWindow.h
+        Public/Week8/Day3/LongestConsecutiveSequence.h
+        Public/Week8/Day4/RotateArray.h
 )
